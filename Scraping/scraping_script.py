@@ -61,7 +61,8 @@ def login():
 
 def sleep_data():
     # ### Reach the sleeping data page
-    WebDriverWait(driver, 20).until(EC.visibility_of_all_elements_located((By.XPATH, "//*[@class='item self-activity-sleep sleep']")))[0].click()
+    # WebDriverWait(driver, 20).until(EC.visibility_of_all_elements_located((By.XPATH, "//*[@class='item self-activity-sleep sleep']")))[0].click()
+    WebDriverWait(driver, 20).until(EC.visibility_of_all_elements_located((By.XPATH, "/html/body/div[2]/div/div[3]/div[2]/div[2]/div/div[2]/div/div[1]/ul/li[3]/div")))[0].click()
     WebDriverWait(driver, 20).until(EC.visibility_of_all_elements_located((By.XPATH, "//*[@class='HMIcons_close action js-close']")))[0].click()
     string = '//*[@id="sleep-content"]/div/div[2]/ul/li[1]/div/div[1]/div[1]/p'
     time.sleep(2)

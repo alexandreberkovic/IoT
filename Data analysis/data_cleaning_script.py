@@ -2,6 +2,10 @@
 # # Imports 
 
 # ## Files
+# some_file.py
+import sys
+# insert at 1, 0 is the script path (or '' in REPL)
+sys.path.insert(0, '/Users/alexandreberkovic/Desktop/Year_4/SIoT/Iot')
 from Scraping import scraping_script
 # ## Packages
 import pandas as pd
@@ -24,7 +28,11 @@ from pprint import pprint
 from googleapiclient import discovery
 from googleapiclient import errors
 from df2gspread import df2gspread as d2g
+from pathlib import Path
 warnings.filterwarnings('ignore')
+
+# main directory
+root = Path('/Users','alexandreberkovic','Desktop', 'Year_4','SIoT','IoT')
 
 # Google sheets API credentials for connection
 # define the scope
@@ -79,8 +87,8 @@ def get_sensor():
 # ## Scraping data
 def get_scraping():
     #run scraping script to update data
-    # scraping_script.main()
-    scraping = pd.read_csv('Scraping/Scraping_data.csv')
+    scraping_script.main()
+    scraping = pd.read_csv(root / 'Scraping/Scraping_data.csv')
     return scraping
 
 
@@ -224,23 +232,23 @@ def sensor_val(api,sensor_new):
 
 
 def export_csv(sensor,sensor_new,api,scraping,light,temperature,humidity):
-    sensor.to_csv('Final_data/sensor.csv',index=False)
-    sensor_new.to_csv('Final_data/sensor_lim.csv',index=False)
-    api.to_csv('Final_data/api.csv',index=False)
-    scraping.to_csv('Final_data/scraping.csv',index=False)
-    light.to_csv('Final_data/light.csv',index=False)
-    temperature.to_csv('Final_data/temperature.csv',index=False)
-    humidity.to_csv('Final_data/humidity.csv',index=False)
+    sensor.to_csv(root / 'Output data/CSV/sensor.csv',index=False)
+    sensor_new.to_csv(root / 'Output data/CSV/sensor_lim.csv',index=False)
+    api.to_csv(root / 'Output data/CSV/api.csv',index=False)
+    scraping.to_csv(root / 'Output data/CSV/scraping.csv',index=False)
+    light.to_csv(root / 'Output data/CSV/light.csv',index=False)
+    temperature.to_csv(root / 'Output data/CSV/temperature.csv',index=False)
+    humidity.to_csv(root / 'Output data/CSV/humidity.csv',index=False)
 
 
 def export_excel(sensor,sensor_new,api,scraping,light,temperature,humidity):
-    sensor.to_excel('Excel/sensor.xlsx',index=False)
-    sensor_new.to_excel('Excel/sensor_lim.xlsx',index=False)
-    api.to_excel('Excel/api.xlsx',index=False)
-    scraping.to_excel('Excel/scraping.xlsx',index=False)
-    light.to_excel('Excel/light.xlsx',index=False)
-    temperature.to_excel('Excel/temperature.xlsx',index=False)
-    humidity.to_excel('Excel/humidity.xlsx',index=False)
+    sensor.to_excel(root / 'Output data/Excel/sensor.xlsx',index=False)
+    sensor_new.to_excel(root / 'Output data/Excel/sensor_lim.xlsx',index=False)
+    api.to_excel(root / 'Output data/Excel/api.xlsx',index=False)
+    scraping.to_excel(root / 'Output data/Excel/scraping.xlsx',index=False)
+    light.to_excel(root / 'Output data/Excel/light.xlsx',index=False)
+    temperature.to_excel(root / 'Output data/Excel/temperature.xlsx',index=False)
+    humidity.to_excel(root / 'Output data/Excel/humidity.xlsx',index=False)
 
 
 def df_to_sheets(spreadsheet_id,sheet_id,df):
