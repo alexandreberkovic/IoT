@@ -91,6 +91,8 @@ def get_data(date,main,sub,li,driver):
             sleep = subStr.text
             sleep = sleep.split(',')
             lst.append([dateFinal,sleep[0],sleep[1]])
+        if i%10==0:
+            driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         # time.sleep(2)
     return lst
     
@@ -122,7 +124,7 @@ def main():
     date = '//*[@id="sleep-content"]/div/div[2]/ul/li[1]/div/div[1]/div[1]/p'
     main = "//li[1]//*[contains(@class, 'content')]//*[contains(@class, 'blocl')]//*[contains(@class, 'graph')]//*[name()='svg']//*[name()='g']//*[name()='rect' and contains(@class, 'shadow-rect')]"
     sub = "//*[local-name()='svg' and @height=235]//*[name()='g']//*[name()='text' and @class='tooltip-value']"
-    d0 = pd.to_datetime('12/11/2021', format='%d/%m/%Y') # initial date
+    d0 = pd.to_datetime('14/11/2021', format='%d/%m/%Y') # initial date
     d1 = pd.to_datetime("today")
     delta = d1 - d0
     li = delta.days #current date

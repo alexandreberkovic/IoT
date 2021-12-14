@@ -232,23 +232,23 @@ def sensor_val(api,sensor_new):
 
 
 def export_csv(sensor,sensor_new,api,scraping,light,temperature,humidity):
-    sensor.to_csv(root / 'Output data/CSV/sensor.csv',index=False)
-    sensor_new.to_csv(root / 'Output data/CSV/sensor_lim.csv',index=False)
-    api.to_csv(root / 'Output data/CSV/api.csv',index=False)
-    scraping.to_csv(root / 'Output data/CSV/scraping.csv',index=False)
-    light.to_csv(root / 'Output data/CSV/light.csv',index=False)
-    temperature.to_csv(root / 'Output data/CSV/temperature.csv',index=False)
-    humidity.to_csv(root / 'Output data/CSV/humidity.csv',index=False)
+    sensor.to_csv(root / 'Output_data/CSV/sensor.csv',index=False)
+    sensor_new.to_csv(root / 'Output_data/CSV/sensor_lim.csv',index=False)
+    api.to_csv(root / 'Output_data/CSV/api.csv',index=False)
+    scraping.to_csv(root / 'Output_data/CSV/scraping.csv',index=False)
+    light.to_csv(root / 'Output_data/CSV/light.csv',index=False)
+    temperature.to_csv(root / 'Output_data/CSV/temperature.csv',index=False)
+    humidity.to_csv(root / 'Output_data/CSV/humidity.csv',index=False)
 
 
 def export_excel(sensor,sensor_new,api,scraping,light,temperature,humidity):
-    sensor.to_excel(root / 'Output data/Excel/sensor.xlsx',index=False)
-    sensor_new.to_excel(root / 'Output data/Excel/sensor_lim.xlsx',index=False)
-    api.to_excel(root / 'Output data/Excel/api.xlsx',index=False)
-    scraping.to_excel(root / 'Output data/Excel/scraping.xlsx',index=False)
-    light.to_excel(root / 'Output data/Excel/light.xlsx',index=False)
-    temperature.to_excel(root / 'Output data/Excel/temperature.xlsx',index=False)
-    humidity.to_excel(root / 'Output data/Excel/humidity.xlsx',index=False)
+    sensor.to_excel(root / 'Output_data/Excel/sensor.xlsx',index=False)
+    sensor_new.to_excel(root / 'Output_data/Excel/sensor_lim.xlsx',index=False)
+    api.to_excel(root / 'Output_data/Excel/api.xlsx',index=False)
+    scraping.to_excel(root / 'Output_data/Excel/scraping.xlsx',index=False)
+    light.to_excel(root / 'Output_data/Excel/light.xlsx',index=False)
+    temperature.to_excel(root / 'Output_data/Excel/temperature.xlsx',index=False)
+    humidity.to_excel(root / 'Output_data/Excel/humidity.xlsx',index=False)
 
 
 def df_to_sheets(spreadsheet_id,sheet_id,df):
@@ -294,9 +294,9 @@ def main():
     scraping = clean_scraping(scraping_raw)
     sensor_new = sensor_bis(sensor,api)
     humidity, temperature, light = sensor_val(api,sensor_new)
-
+    # export_excel(scraping)
     export_csv(sensor,sensor_new,api,scraping,light,temperature,humidity)
-    # export_excel(sensor,sensor_new,api,scraping,light,temperature,humidity)
+    export_excel(sensor,sensor_new,api,scraping,light,temperature,humidity)
 
     ids = [sensor_id, sensor_lim_id, light_id, humidity_id, temperature_id, api_id, scraping_id]
     dfs = [sensor,sensor_new,light,humidity,temperature,api,scraping]
