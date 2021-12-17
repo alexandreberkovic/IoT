@@ -1,7 +1,0 @@
-{
-    "app_id": "esp32-room-mpvbz",
-    "config_version": 20210101,
-    "name": "ESP32-room",
-    "location": "IE",
-    "deployment_model": "LOCAL"
-}
