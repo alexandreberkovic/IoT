@@ -1,4 +1,4 @@
-# SIoT DES4 project repository
+# SIoT DE4 project repository
 
 This repository contains all the code required to run the IoT sleep monitoring system designed and is divided in the following folders
 
